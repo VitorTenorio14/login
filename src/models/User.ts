@@ -1,9 +1,10 @@
 // src/entity/User.ts
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity } from "typeorm";
 import { Task } from "./Task";
 
-@Entity("users")
-export class User {
+@Entity()
+export class User extends BaseEntity {
+
   @PrimaryGeneratedColumn()
   id: number | undefined;
 

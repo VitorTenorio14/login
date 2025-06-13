@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro - Joalheria</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h1>Inscreva-se</h1>
+    <form id="registerForm">
+      <input type="text" id="username" placeholder="Nome de usuário" required />
+      <input type="password" id="password" placeholder="Senha" required />
+      <button class="btn-container" id="login-btn" type="submit">Cadastrar</button>
+      <p id="registerMsg" class="success-msg"></p>
+    </form>
+    <p class="redirect-msg">Já tem conta? <a href="index.html">Voltar ao login</a></p>
+  </div>
+
+  <script src="register.js"></script>
+</body>
+</html>

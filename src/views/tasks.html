@@ -30,6 +30,15 @@
             <!-- Tarefas serão carregadas aqui -->
         </div>
     </div>
-    <script src="tasks.js"></script>
+    <script src="tasks.js">
+            const token = localStorage.getItem('token');
+
+            if (!token) {
+            window.location.href = 'index.html';
+            }
+
+    </script>
+
+    
 </body>
 </html>
