@@ -4,6 +4,7 @@ const btnContainer = document.querySelector('.btn-container');
 const btn = document.querySelector('#login-btn');
 const form = document.querySelector('form');
 const msg = document.querySelector('.msg');
+const API_BASE_URL = 'http://localhost:3000';
 btn.disabled = true;
 
 function shiftButton() {
@@ -30,6 +31,41 @@ function showMsg() {
         btn.classList.add('no-shift')
     }
 }
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    if (uname.value === '' || pass.value === '') {
+        showMsg();
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/auth/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: uname.value,
+                password: pass.value
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            localStorage.setItem('token', data.token);
+            window.location.href = 'tasks.html';
+        } else {
+            msg.style.color = 'rgb(218 49 49)';
+            msg.innerText = data.message || 'Erro no login';
+        }
+    } catch (error) {
+        msg.style.color = 'rgb(218 49 49)';
+        msg.innerText = 'Erro de conexão com o servidor';
+    }
+});
 
 btnContainer.addEventListener('mouseover', shiftButton);
 btn.addEventListener('mouseover', shiftButton);
